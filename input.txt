@@ -1,0 +1,14 @@
+Artem;cat;Murzik;6
+Dima;dog;Assembler;74
+Artem;cat;Vasya;7
+Dima;cat;Ronaldo;22
+Alex;fish;,,;10
+Mika;fish;Nim;12
+Olya;fish;,,;3
+Sasha;dog;Nim;23
+Misha;dog;Rick;7
+David;dog;Morty;1
+David;fish;,,;10
+Ilya;cat;,,;9
+Olya;fish;,,;3
+Olya;fish;,,;3
