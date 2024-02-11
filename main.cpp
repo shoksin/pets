@@ -104,7 +104,6 @@ int main()
     for(const auto& animal:unique_animals){
        std::cout<<"Owner "<<animal.first<<" has "<<animal.second.size()<<" different animals\n";
     }
-    //dfgdg
 
     std::cout << "-----------------------------------------------------------\n";
     std::cout << "What type of animal should I check?(Enter[CAT,DOG,FISH])\n";
