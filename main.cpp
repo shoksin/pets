@@ -28,7 +28,24 @@ std::string ToNormal(std::string s) //функция приведения к в�
 }
 
 int main()
-{
+{   
+    std::cout<<"Method checking:\n";
+    Dog dog1("Egor","Cooper",6);
+    Cat cat1("Artem","Audi",8);
+    Fish fish1("Dima","King",2);
+    Animal an1("Lesha","humster","Gosha",3);
+    std::cout<< cat1.ToEat();
+    std::cout<<dog1.ToEat();
+    std::cout<<fish1.ToEat();
+    std::cout<<cat1.ToSleep();
+    std::cout<<dog1.ToSleep();
+    std::cout<<fish1.ToSleep();
+    std::cout<<cat1.Say();
+    std::cout<<dog1.woof();
+    std::cout<<fish1.Swim();
+
+    std::cout<<"-----------------------------------------------------------\n";
+
     std::multimap<std::string, Cat> cat_map;
     std::multimap<std::string, Dog> dog_map;
     std::multimap<std::string, Fish> fish_map;
@@ -71,7 +88,7 @@ int main()
 
         if (words[1] == "cat") // проверка на тип животного
         {
-            Cat c = Cat(words[0], words[1], ToUpper(words[2]), stoi(words[3]));
+            Cat c = Cat(words[0], ToUpper(words[2]), stoi(words[3]));
             std::pair<std::string, Cat> pr1(words[0], c);
             std::pair<std::string, Animal> own1(words[0], c);
             cat_map.insert(pr1);
@@ -79,7 +96,7 @@ int main()
         }
         else if (words[1] == "dog")
         {
-            Dog d = Dog(words[0], words[1], ToUpper(words[2]), stoi(words[3]));
+            Dog d = Dog(words[0], ToUpper(words[2]), stoi(words[3]));
             std::pair<std::string, Dog> pr2(words[0], d);
             std::pair<std::string, Animal> own2(words[0], d);
             dog_map.insert(pr2);
@@ -87,12 +104,21 @@ int main()
         }
         else if (words[1] == "fish")
         {
-            Fish f = Fish(words[0], words[1], ToUpper(words[2]), stoi(words[3]));
+            Fish f = Fish(words[0], ToUpper(words[2]), stoi(words[3]));
             std::pair<std::string, Fish> pr3(words[0], f);
             std::pair<std::string, Animal> own3(words[0], f);
             fish_map.insert(pr3);
             animal_map.insert(own3);
         }
+
+        else{                                    //обработка ситуации , если в списке будет тип животного не cat,dog,fish.
+            std::cerr<<"Wrong animal type! ";
+            for(int i = 0;i<words.size();i++){
+                std::cerr<<words[i]<<" ";
+            }
+            exit(1);
+        }
+    
         unique_animals[words[0]].insert(words[1]);
 
         words.clear();

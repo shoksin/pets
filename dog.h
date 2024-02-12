@@ -4,26 +4,37 @@
 class Dog : public Animal
 {
 private:
-	std::string breed;
-public:
-	Dog() : Animal(){}
+	std::string breed;  //порода
 
-	Dog(std::string owner_, std::string animalType_, std::string name_, int age_) : Animal(){
+public:
+	Dog() : Animal() {}
+
+	Dog(std::string owner_, std::string name_, int age_) : Dog() //можно и ... :Animal()
+	{
 		owner = owner_;
-		animalType = animalType_;
+		animalType = "dog";
 		name = name_;
 		age = age_;
 	}
 
+	std::string ToEat()
+	{
+		std::string message;
+		message = "Dog " + name + " wants eat!\n";
+		return message;
+	}
+
+	std::string ToSleep()
+	{
+		std::string message;
+		message = "Dog " + name + " want to sleep!\n";
+		return message;
+	}
 
 	std::string woof()
 	{
-		std::string message = " says woof";
+		std::string message = " says woof\n";
 		return name + message;
 	}
 
-	void fdf()
-	{
-	}
 };
-

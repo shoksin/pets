@@ -20,22 +20,47 @@ public:
 		animalType = "";
 	}
 
+    int exeption;
+
 	Animal(std::string owner_, std::string animalType_, std::string name_, int age_)
 	{
 		owner = owner_;
-		animalType = animalType_;
+		try
+		{
+			if (animalType_ != "cat" && animalType_ != "dog" && animalType_ != "fish")
+			{
+				throw exeption;
+			}
+			else
+			{
+				animalType = animalType_;
+			}
+		}
+		catch (int e)
+		{
+        std::cerr<<"Not avaiable!";
+		exit(1);
+		}
 		name = name_;
 		age = age_;
 	}
 
-	void ToEat()
-	{
-		std::cout << name << " want to eat!";
+	~Animal(){
+
 	}
 
-	void ToSleep()
+	virtual std::string ToEat() // virtual
 	{
-		std::cout << name << " want to sleep!";
+		std::string message;
+		message = name + " want to eat!\n";
+		return message; // возвращаю строку,чтобы вывод можно было сделать в файл
+	}
+
+	virtual std::string ToSleep()
+	{
+		std::string message;
+		message = name + " want to sleep!\n";
+		return message;
 	}
 
 	void SetAnimalOwner()
@@ -75,17 +100,19 @@ public:
 
 	Animal operator=(const Animal &a);
 
-	void PrintOwnerAndName(const Animal &a){
-		std::cout<<a.owner<<" "<<a.name<<"\n";
+	void PrintOwnerAndName(const Animal &a)
+	{
+		std::cout << a.owner << " " << a.name << "\n";
 	}
 };
 
-Animal Animal::operator=(const Animal& a){
-owner = a.owner;
-animalType = a.animalType;
-name = a.name;
-age = a.age;
-return *this;
+Animal Animal::operator=(const Animal &a)
+{ // оператор присваивания
+	owner = a.owner;
+	animalType = a.animalType;
+	name = a.name;
+	age = a.age;
+	return *this;
 }
 
 std::ostream &operator<<(std::ostream &ostream, Animal a)
